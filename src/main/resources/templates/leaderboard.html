@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Leaderboard</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Username</th>
+            <th>Total Reward Points</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user, iterStat : ${users}">
+            <td th:text="${iterStat.index + 1}">Rank</td>
+            <td th:text="${user.username}">Username</td>
+            <td th:text="${user.totalRewardPoints}">Total Reward Points</td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/user/home/{id}(id=${userId})}" class="btn btn-secondary mt-3">Back to Home</a>
+</div>
+</body>
+</html>

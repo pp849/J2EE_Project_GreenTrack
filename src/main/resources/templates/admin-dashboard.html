@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, Admin!</p>
+    <a th:href="@{/admin/events/add}" class="btn btn-primary">Add Event</a>
+    <a th:href="@{/admin/logout}" class="btn btn-danger">Logout</a>
+
+    <!-- Display list of events with update and delete links -->
+    <h3 class="mt-5">Events</h3>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Reward</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.eventName}">Event Name</td>
+            <td th:text="${event.description}">Description</td>
+            <td th:text="${event.reward}">Reward</td>
+            <td>
+                <a th:href="@{/admin/events/update/{id}(id=${event.id})}" class="btn btn-warning">Update</a>
+                <a th:href="@{/admin/events/delete/{id}(id=${event.id})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

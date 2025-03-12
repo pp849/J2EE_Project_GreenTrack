@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .btn-spacing {
+            margin-right: 10px; /* Adjust the value as needed */
+        }
+    </style>
+
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Welcome, User!</h2>
+    <p th:text="${message}" style="color: green;"></p>
+    <p><strong>Total Reward Points:</strong> <span th:text="${user.totalRewardPoints}">0</span></p>
+
+    <!-- Buttons with spacing -->
+
+    <div class="d-flex">
+        <a th:href="@{/user/{id}(id=${userId})}" class="btn btn-info btn-spacing">View Profile</a>
+        <a th:href="@{/user/events/{id}(id=${userId})}" class="btn btn-success btn-spacing">View Events</a>
+        <a th:href="@{/user/leaderboard(userId=${userId})}" class="btn btn-info btn-spacing">View Leaderboard</a>
+        <a th:href="@{/user/logout}" class="btn btn-danger">Logout</a>
+    </div>
+</div>
+</body>
+</html>
