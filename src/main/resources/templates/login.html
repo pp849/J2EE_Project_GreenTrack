@@ -2,8 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <h1>Login</h1>
 <form th:action="@{/login}" method="post">
     <input type="text" name="username" placeholder="Username" required>
@@ -11,5 +13,6 @@
     <button type="submit">Login</button>
 </form>
 <a href="/register">Register</a>
+<div th:insert="~{fragments/footer}"></div>
 </body>
 </html>

@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <div class="container mt-5">
     <h2>Admin Dashboard</h2>
     <p>Welcome, Admin!</p>
@@ -35,5 +36,6 @@
         </tbody>
     </table>
 </div>
+<div th:insert="~{fragments/footer}"></div>
 </body>
 </html>

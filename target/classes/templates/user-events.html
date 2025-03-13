@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Events</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <div class="container mt-5">
   <h2>Available Events</h2>
   <p th:if="${message}" th:text="${message}" style="color: green;"></p>
@@ -56,5 +57,6 @@
   </table>
   <a th:href="@{/user/home/{id}(id=${userId})}" class="btn btn-secondary mt-3">Back to Home</a>
 </div>
+<div th:insert="~{fragments/footer}"></div>
 </body>
 </html>

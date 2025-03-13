@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to GreenTrack</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<!-- Header Fragment -->
+<div th:insert="~{fragments/header}"></div>
+
+<div class="container home-container">
+    <h1>Welcome to GreenTrack</h1>
+    <p>Track your eco-friendly activities, compete on leaderboards, and contribute to a greener planet.</p>
+
+    <div class="home-cards">
+        <!-- Admin Login Card -->
+        <div class="home-card">
+            <h2>Admin Portal</h2>
+            <p>Manage users, activities, and events efficiently.</p>
+            <a th:href="@{/admin/login}" class="btn btn-admin">Admin Login</a>
+        </div>
+
+        <!-- User Login Card -->
+        <div class="home-card">
+            <h2>User Login</h2>
+            <p>Log in to track your activities and view your contributions.</p>
+            <a th:href="@{/user/login}" class="btn btn-user">User Login</a>
+        </div>
+
+        <!-- User Signup Card -->
+        <div class="home-card">
+            <h2>New User?</h2>
+            <p>Sign up today and start your sustainability journey.</p>
+            <a th:href="@{/user/signup}" class="btn btn-signup">Sign Up</a>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Fragment -->
+<div th:insert="~{fragments/footer}"></div>
+</body>
+</html>

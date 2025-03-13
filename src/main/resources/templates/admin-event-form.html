@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Create Event</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+<div th:insert="~{fragments/header}"></div>
 <div class="container mt-5">
     <h2>Create Event</h2>
     <form th:action="@{/admin/events/new}" th:object="${event}" method="post">
@@ -28,5 +29,6 @@
     </form>
     <a th:href="@{/admin/dashboard}" class="btn btn-secondary mt-3">Back to Dashboard</a>
 </div>
+<div th:insert="~{fragments/footer}"></div>
 </body>
 </html>
