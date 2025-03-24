@@ -111,7 +111,7 @@ th, td {
 }
 
 th {
-    background-color: #81c784; /* Eco green */
+    background-color: #2ecc71; /* Eco green */
     color: white;
 }
 
@@ -260,10 +260,9 @@ button:hover {
     border-radius: 6px;
     text-decoration: none;
     font-weight: bold;
-    color: white;
+    color: darkgreen;
     transition: background 0.3s ease-in-out;
 }
-
 .btn-admin {
     background-color: #28a745;
 }

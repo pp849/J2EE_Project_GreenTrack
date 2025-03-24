@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<!-- Header Fragment -->
+<div th:insert="~{fragments/header}"></div>
+<body>
+
+<header>
+    <h1>Leaderboard</h1>
+</header>
+
+<table border="1">
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Points</th>
+    </tr>
+    <tr th:each="user, iterStat : ${leaderboardUsers}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.totalRewardPoints}"></td>
+
+    </tr>
+</table>
+
+</body>
+
+
+<div th:insert="~{fragments/footer}"></div>
+</html>

@@ -21,6 +21,7 @@ public class EventController {
         return "events";
     }
 
+
     @PostMapping("/enroll")
     public String enrollForEvent(@RequestParam Long eventId) {
         eventService.enrollForEvent(eventId);

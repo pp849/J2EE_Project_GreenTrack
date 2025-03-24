@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Events</title>
+    <link rel="stylesheet" href="/css/style.css"></head>
+<body>
+<!-- Header Fragment -->
+<div th:insert="~{fragments/header}"></div>
+<h1>Events</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Event Name</th>
+        <th>Description</th>
+        <th>Reward</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="event : ${events}">
+        <td th:text="${event.eventName}"></td>
+        <td th:text="${event.description}"></td>
+        <td th:text="${event.reward}"></td>
+
+    </tr>
+    </tbody>
+</table>
+<div th:insert="~{fragments/footer}"></div>
+</body>
+</html>
