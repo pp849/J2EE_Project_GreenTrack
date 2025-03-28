@@ -1,7 +1,9 @@
 package com.luv2code.springboot.thymeleafdemo.controller;
 
+import com.luv2code.springboot.thymeleafdemo.model.Activity;
 import com.luv2code.springboot.thymeleafdemo.model.Event;
 import com.luv2code.springboot.thymeleafdemo.model.User;
+import com.luv2code.springboot.thymeleafdemo.services.ActivityService;
 import com.luv2code.springboot.thymeleafdemo.services.EventService;
 import com.luv2code.springboot.thymeleafdemo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,8 @@ public class HomeController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private ActivityService activityService;
 
     // Home Page
     @GetMapping("/")
@@ -27,10 +31,13 @@ public class HomeController {
         return "home";
     }
 
-    // Activities Page
-    @GetMapping("/activities")
-    public String activitiesPage() {
-        return "activities";
+
+
+    @GetMapping("/activitiesPage")  // Change the URL to avoid conflict
+    public String personalactivitiesPage(Model model) {
+        List<Activity> activities = activityService.getAllActivities();
+        model.addAttribute("activities", activityService.getAllActivities());
+        return "activities"; // Return the corresponding view name
     }
 
     // Leaderboard Page

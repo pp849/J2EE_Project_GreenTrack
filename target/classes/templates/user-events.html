@@ -5,24 +5,32 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
+
+<!-- Header Fragment -->
 <div th:insert="~{fragments/header}"></div>
+
 <div class="container mt-5">
   <h2>Available Events</h2>
   <p th:if="${message}" th:text="${message}" style="color: green;"></p>
+
   <table class="table table-bordered">
     <thead>
     <tr>
       <th>Event Name</th>
       <th>Description</th>
       <th>Reward</th>
+      <th>Event Date</th> <!-- ✅ Added Date Column -->
+      <th>Location</th>   <!-- ✅ Added Location Column -->
       <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="event : ${availableEvents}">
-      <td th:text="${event.eventName}">Event Name</td> <!-- Use event.eventName -->
+      <td th:text="${event.eventName}">Event Name</td>
       <td th:text="${event.description}">Event Description</td>
       <td th:text="${event.reward}">Event Reward</td>
+      <td th:text="${event.eventDate}">Event Date</td> <!-- ✅ Show Event Date -->
+      <td th:text="${event.location}">Location</td>   <!-- ✅ Show Location -->
       <td>
         <form th:action="@{/user/enroll/{userId}/{eventId}(userId=${userId}, eventId=${event.id})}" method="post">
           <button type="submit" class="btn btn-success">Enroll</button>
@@ -33,20 +41,25 @@
   </table>
 
   <h2 class="mt-5">Enrolled Events</h2>
+
   <table class="table table-bordered">
     <thead>
     <tr>
       <th>Event Name</th>
       <th>Description</th>
       <th>Reward</th>
+      <th>Event Date</th> <!-- ✅ Added Date Column -->
+      <th>Location</th>   <!-- ✅ Added Location Column -->
       <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="enrolledEvent : ${enrolledEvents}">
-      <td th:text="${enrolledEvent.event.eventName}">Enrolled Event Name</td> <!-- Use enrolledEvent.event.eventName -->
+      <td th:text="${enrolledEvent.event.eventName}">Enrolled Event Name</td>
       <td th:text="${enrolledEvent.event.description}">Enrolled Event Description</td>
       <td th:text="${enrolledEvent.event.reward}">Enrolled Event Reward</td>
+      <td th:text="${enrolledEvent.event.eventDate}">Enrolled Event Date</td> <!-- ✅ Show Event Date -->
+      <td th:text="${enrolledEvent.event.location}">Enrolled Location</td>   <!-- ✅ Show Location -->
       <td>
         <form th:action="@{/user/drop/{userId}/{eventId}(userId=${userId}, eventId=${enrolledEvent.event.id})}" method="post">
           <button type="submit" class="btn btn-danger">Drop</button>
@@ -55,8 +68,12 @@
     </tr>
     </tbody>
   </table>
+
   <a th:href="@{/user/home/{id}(id=${userId})}" class="btn btn-secondary mt-3">Back to Home</a>
 </div>
+
+<!-- Footer Fragment -->
 <div th:insert="~{fragments/footer}"></div>
+
 </body>
 </html>

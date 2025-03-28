@@ -5,13 +5,7 @@ html, body {
     padding: 0;
 }
 
-/* Make body a flex container */
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 40px;
-}
+
 
 /* Header Styling */
 .header {
@@ -42,9 +36,13 @@ body {
 
 /* Navigation Bar */
 nav {
-    flex-grow: 1;
-    text-align: right;
+    display: flex;         /* Enables flexbox */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center;   /* Centers content vertically */
+            /* Adjust height as needed */
+    text-align: center;    /* Ensures text inside is centered */
 }
+
 
 .nav-links {
     list-style: none;
@@ -79,23 +77,6 @@ nav {
     color: #dff9fb;
 }
 
-/* Responsive Navigation for Mobile */
-@media screen and (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-links li {
-        display: block;
-        text-align: center;
-    }
-}
 
 /* Table Styling */
 table {
@@ -352,3 +333,107 @@ h2 {
 .btn:hover {
     background: #27ae60; /* Darker green on hover */
 }
+
+.footer {
+    background-color: #27ae60;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-section {
+    width: 22%;
+    margin-bottom: 20px;
+}
+
+.footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #27ae60;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 8px 0;
+}
+
+.footer-section ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #27ae60;
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    border-top: 1px solid #27ae60;
+    padding-top: 20px;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-links li {
+    display: inline;
+}
+
+.social-links img {
+    width: 30px;
+    transition: transform 0.3s;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+}
+
+/* Newsletter Styling */
+.newsletter input[type="email"] {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.newsletter button {
+    background-color: #27ae60;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.newsletter button:hover {
+    background-color: #218c54;
+}
+

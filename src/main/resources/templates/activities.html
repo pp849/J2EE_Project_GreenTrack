@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Eco-Friendly Activities - GreenTrack</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<!-- Header Fragment -->
+<div th:insert="~{fragments/header}"></div>
+
+<div class="container">
+    <h1 class="page-title">🌱 Simple Ways to Contribute to a Greener Future</h1>
+    <p>Every small effort counts! Here are meaningful ways to make an impact in your daily life.</p>
+
+    <!-- Activities Section -->
+    <div class="activities-grid">
+        <div class="activity-card" th:each="activity : ${activities}">
+            <h2 th:text="${activity.activityName}"></h2>
+            <p th:text="${activity.description}"></p>
+            <p><strong>Impact:</strong> <span th:text="${activity.impact}"></span></p>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Fragment -->
+<div th:insert="~{fragments/footer}"></div>
+
+</body>
+</html>

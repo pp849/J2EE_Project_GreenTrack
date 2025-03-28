@@ -21,6 +21,19 @@
             <label for="reward">Reward</label>
             <input type="number" class="form-control" id="reward" th:field="*{reward}" required>
         </div>
+
+        <!-- ✅ New: Event Date Field -->
+        <div class="form-group">
+            <label for="eventDate">Event Date</label>
+            <input type="date" class="form-control" id="eventDate" th:field="*{eventDate}" required>
+        </div>
+
+        <!-- ✅ New: Event Location Field -->
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" class="form-control" id="location" th:field="*{location}" required>
+        </div>
+
         <button type="submit" class="btn btn-primary">Add Event</button>
     </form>
     <p class="mt-3" th:if="${message}" th:text="${message}" style="color: green;"></p>
