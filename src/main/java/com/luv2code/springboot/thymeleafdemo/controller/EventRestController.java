@@ -26,9 +26,9 @@ public class EventRestController {
     }
 
     @PostMapping("/enroll")
-    public ResponseEntity<String> enrollForEvent(@RequestParam Long userId, @RequestParam Long eventId) {
-        eventService.enrollForEvent(eventId);
-        return ResponseEntity.ok("Enrolled successfully");
+    public String enrollForEvent(@RequestParam Long eventId, @RequestParam Long userId) {
+        eventService.enrollForEvent(eventId, userId);  // Correctly passing both parameters
+        return "User enrolled for the event successfully!";
     }
 }
 

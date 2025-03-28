@@ -3,7 +3,7 @@ package com.luv2code.springboot.thymeleafdemo.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -22,5 +22,7 @@ public class EnrolledEvent {
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)
-    private Event event; // Ensure this field exists
+    private Event event;
+
+
 }

@@ -2,10 +2,12 @@ package com.luv2code.springboot.thymeleafdemo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Data
+@Data  // ✅ Generates getters, setters, toString, equals, and hashCode
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "events")
@@ -23,6 +25,12 @@ public class Event {
 
     @Column(name = "reward")
     private int reward;
+
+    @Column(name = "event_date", nullable = false)
+    private LocalDate eventDate;  // ✅ Automatically generates getEventDate() & setEventDate()
+
+    @Column(name = "location", nullable = false)
+    private String location;  // ✅ Automatically generates getLocation() & setLocation()
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EnrolledEvent> enrolledEvents;

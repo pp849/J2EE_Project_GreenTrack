@@ -2,29 +2,30 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Events</title>
-    <link rel="stylesheet" href="/css/style.css"></head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 <body>
+
 <!-- Header Fragment -->
 <div th:insert="~{fragments/header}"></div>
-<h1>Events</h1>
-<table border="1">
-    <thead>
-    <tr>
-        <th>Event Name</th>
-        <th>Description</th>
-        <th>Reward</th>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="event : ${events}">
-        <td th:text="${event.eventName}"></td>
-        <td th:text="${event.description}"></td>
-        <td th:text="${event.reward}"></td>
+<div class="container">
+    <h1 class="text-center">Upcoming Events</h1>
 
-    </tr>
-    </tbody>
-</table>
+    <div class="events-grid">
+        <div class="event-card" th:each="event : ${events}">
+            <h2 th:text="${event.eventName}"></h2>
+            <p><strong>Description:</strong> <span th:text="${event.description}"></span></p>
+            <p><strong>Reward:</strong> <span th:text="${event.reward}"></span> Points</p>
+            <p><strong>Date:</strong> <span th:text="${event.eventDate}"></span></p>
+            <p><strong>Location:</strong> <span th:text="${event.location}"></span></p>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer Fragment -->
 <div th:insert="~{fragments/footer}"></div>
+
 </body>
 </html>
