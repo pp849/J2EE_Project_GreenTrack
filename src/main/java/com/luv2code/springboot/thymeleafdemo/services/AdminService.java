@@ -12,7 +12,6 @@ public class AdminService {
     @Autowired
     private AdminRepository adminRepository;
 
-    // Authenticate admin login
     public Optional<Admin> loginAdmin(String username, String password) {
         return adminRepository.findByUsernameAndPassword(username, password);
     }
