@@ -9,8 +9,10 @@ import com.luv2code.springboot.thymeleafdemo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -62,37 +64,44 @@ public class UserService {
     @Transactional
     public void enrollInEvent(Long userId, Long eventId) {
         User user = getUserById(userId);
-        Event event = eventRepository.findById(eventId)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+        Optional<Event> optionalEvent = eventRepository.findById(eventId);
 
-        if (!enrolledEventRepository.existsByUserIdAndEventId(userId, eventId)) {
-            EnrolledEvent enrolledEvent = new EnrolledEvent();
-            enrolledEvent.setUser(user);
-            enrolledEvent.setEvent(event);
-            enrolledEventRepository.save(enrolledEvent);
+        if (optionalEvent.isPresent()) {
+            Event event = optionalEvent.get();
+            if (!enrolledEventRepository.existsByUserIdAndEventId(userId, eventId)) {
+                EnrolledEvent enrolledEvent = new EnrolledEvent();
+                enrolledEvent.setUser(user);
+                enrolledEvent.setEvent(event);
+                enrolledEventRepository.save(enrolledEvent);
 
-            // Add the event's reward to the user's total reward points
-            user.setTotalRewardPoints(user.getTotalRewardPoints() + event.getReward());
-            userRepository.save(user); // Save the updated user
+                // Add the event's reward to the user's total reward points
+                user.setTotalRewardPoints(user.getTotalRewardPoints() + event.getReward());
+                userRepository.save(user); // Save the updated user
+            }
+        } else {
+            throw new RuntimeException("Event not found");
         }
     }
 
     // Drop an event
     @Transactional
     public void dropEvent(Long userId, Long eventId) {
-        // Fetch the user and event
         User user = getUserById(userId);
-        Event event = eventRepository.findById(eventId)
-                .orElseThrow(() -> new RuntimeException("Event not found"));
+        Optional<Event> optionalEvent = eventRepository.findById(eventId);
 
-        // Check if the user is enrolled in the event
-        if (enrolledEventRepository.existsByUserIdAndEventId(userId, eventId)) {
-            // Subtract the event's reward from the user's total reward points
-            user.setTotalRewardPoints(user.getTotalRewardPoints() - event.getReward());
-            userRepository.save(user); // Save the updated user
+        if (optionalEvent.isPresent()) {
+            Event event = optionalEvent.get();
 
-            // Delete the enrollment record
-            enrolledEventRepository.deleteByUserIdAndEventId(userId, eventId);
+            if (enrolledEventRepository.existsByUserIdAndEventId(userId, eventId)) {
+                // Subtract the event's reward from the user's total reward points
+                user.setTotalRewardPoints(user.getTotalRewardPoints() - event.getReward());
+                userRepository.save(user); // Save the updated user
+
+                // Delete the enrollment record
+                enrolledEventRepository.deleteByUserIdAndEventId(userId, eventId);
+            }
+        } else {
+            throw new RuntimeException("Event not found");
         }
     }
 
