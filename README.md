@@ -24,7 +24,7 @@ Technologies Used
 •	Build Tool: Maven
 •	Version Control: Git 
 Project Structure
-
+```
 J2EE_Project_GreenTrack/
 ├── src/
 │   ├── main/
@@ -42,6 +42,7 @@ J2EE_Project_GreenTrack/
 │   │       └── application.properties
 ├── pom.xml
 └── README.md
+```
 
 Database
 The MySQL schema includes the following tables:
